@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Editar Propietario"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Número Propietario:" for="numpropietario" />
+                    <h:inputText id="numpropietario" value="#{propietarioController.selected.numpropietario}" title="#{bundle.EditPropietarioTitle_numpropietario}" required="true" requiredMessage="#{bundle.EditPropietarioRequiredMessage_numpropietario}"/>
+                    <h:outputLabel value="Nombre:" for="nombre" />
+                    <h:inputText id="nombre" value="#{propietarioController.selected.nombre}" title="#{bundle.EditPropietarioTitle_nombre}" />
+                    <h:outputLabel value="Apellido" for="apellido" />
+                    <h:inputText id="apellido" value="#{propietarioController.selected.apellido}" title="#{bundle.EditPropietarioTitle_apellido}" />
+                    <h:outputLabel value="Rut:" for="rut" />
+                    <h:inputText id="rut" value="#{propietarioController.selected.rut}" title="#{bundle.EditPropietarioTitle_rut}" />
+                    <h:outputLabel value="Dirección:" for="direccion" />
+                    <h:inputText id="direccion" value="#{propietarioController.selected.direccion}" title="#{bundle.EditPropietarioTitle_direccion}" />
+                    <h:outputLabel value="Teléfono:" for="telefono" />
+                    <h:inputText id="telefono" value="#{propietarioController.selected.telefono}" title="#{bundle.EditPropietarioTitle_telefono}" />
+                </h:panelGrid>
+                <h:commandLink action="#{propietarioController.update}" value="Guardar datos modificados"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="Vista específica"/>
+                <br />
+                <h:commandLink action="#{propietarioController.prepareList}" value="Lista de Propietarios" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Volver al Menú" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

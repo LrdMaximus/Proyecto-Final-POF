@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Mantenedor Inspección"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListInspeccionesEmpty}" rendered="#{inspeccionesController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{inspeccionesController.items.rowCount > 0}">
+                    <h:outputText value="#{inspeccionesController.pagination.pageFirstItem + 1}..#{inspeccionesController.pagination.pageLastItem + 1}/#{inspeccionesController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{inspeccionesController.previous}" value="#{bundle.Previous} #{inspeccionesController.pagination.pageSize}" rendered="#{inspeccionesController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{inspeccionesController.next}" value="#{bundle.Next} #{inspeccionesController.pagination.pageSize}" rendered="#{inspeccionesController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{inspeccionesController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInspeccionesTitle_idinspeccion}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.idinspeccion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInspeccionesTitle_numpropietario}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numpropietario}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInspeccionesTitle_tipoprop}"/>
+                            </f:facet>
+                            <h:outputText value="Tipo propiedad"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Código postal"/>
+                            </f:facet>
+                            <h:outputText value="#{item.codigopostal}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Dirección"/>
+                            </f:facet>
+                            <h:outputText value="#{item.calle}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Comuna"/>
+                            </f:facet>
+                            <h:outputText value="#{item.comuna}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Ciudad"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ciudad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Fecha inspección"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fechainspeccion}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListInspeccionesTitle_numpropiedad}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numpropiedad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{inspeccionesController.prepareView}" value="Ver"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{inspeccionesController.prepareEdit}" value="Editar"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{inspeccionesController.destroy}" value="Eliminar"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{inspeccionesController.prepareCreate}" value="Registrar nueva inspección"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Volver al Menú"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Registrar nuevo Arriendo"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Número de arriendo:" for="numarriendo" />
+                    <h:inputText id="numarriendo" value="#{arriendoController.selected.numarriendo}" title="#{bundle.CreateArriendoTitle_numarriendo}" required="true" requiredMessage="#{bundle.CreateArriendoRequiredMessage_numarriendo}"/>
+                    <h:outputLabel value="Precio de Renta:" for="renta" />
+                    <h:inputText id="renta" value="#{arriendoController.selected.renta}" title="#{bundle.CreateArriendoTitle_renta}" />
+                    <h:outputLabel value="Forma de Pago:" for="formapago" />
+                    <h:inputText id="formapago" value="#{arriendoController.selected.formapago}" title="#{bundle.CreateArriendoTitle_formapago}" />
+                    <h:outputLabel value="Temporada:" for="temporada" />
+                    <h:inputText id="temporada" value="#{arriendoController.selected.temporada}" title="#{bundle.CreateArriendoTitle_temporada}" />
+                    <h:outputLabel value="Deposito:" for="deposito" />
+                    <h:inputText id="deposito" value="#{arriendoController.selected.deposito}" title="#{bundle.CreateArriendoTitle_deposito}" />
+                    <h:outputLabel value="Pagado:" for="pagado" />
+                    <h:inputText id="pagado" value="#{arriendoController.selected.pagado}" title="#{bundle.CreateArriendoTitle_pagado}" />
+                    <h:outputLabel value="Fecha de inicio:" for="iniciorenta" />
+                    <h:inputText id="iniciorenta" value="#{arriendoController.selected.iniciorenta}" title="#{bundle.CreateArriendoTitle_iniciorenta}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Fecha de termino:" for="finrenta" />
+                    <h:inputText id="finrenta" value="#{arriendoController.selected.finrenta}" title="#{bundle.CreateArriendoTitle_finrenta}" >
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Nro de Cliente:" for="numcliente" />
+                    <h:selectOneMenu id="numcliente" value="#{arriendoController.selected.numcliente}" title="#{bundle.CreateArriendoTitle_numcliente}" >
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Nro de Propiedad:" for="numpropiedad" />
+                    <h:selectOneMenu id="numpropiedad" value="#{arriendoController.selected.numpropiedad}" title="#{bundle.CreateArriendoTitle_numpropiedad}" >
+                        <f:selectItems value="#{propiedadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{arriendoController.create}" value="Guardar" />
+                <br />
+                <br />
+                <h:commandLink action="#{arriendoController.prepareList}" value="Mostrar lista de Arriendos" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Volver al Menú"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

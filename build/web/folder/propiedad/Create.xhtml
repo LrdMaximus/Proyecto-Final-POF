@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Registrar nueva propiedad"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Número propiedad:" for="numpropiedad" />
+                    <h:inputText id="numpropiedad" value="#{propiedadController.selected.numpropiedad}" title="#{bundle.CreatePropiedadTitle_numpropiedad}" required="true" requiredMessage="#{bundle.CreatePropiedadRequiredMessage_numpropiedad}"/>
+                    <h:outputLabel value="Dirección:" for="calle" />
+                    <h:inputText id="calle" value="#{propiedadController.selected.calle}" title="#{bundle.CreatePropiedadTitle_calle}" />
+                    <h:outputLabel value="Comuna:" for="comuna" />
+                    <h:inputText id="comuna" value="#{propiedadController.selected.comuna}" title="#{bundle.CreatePropiedadTitle_comuna}" />
+                    <h:outputLabel value="Ciudad" for="ciudad" />
+                    <h:inputText id="ciudad" value="#{propiedadController.selected.ciudad}" title="#{bundle.CreatePropiedadTitle_ciudad}" />
+                    <h:outputLabel value="Código Postal:" for="codigopostal" />
+                    <h:inputText id="codigopostal" value="#{propiedadController.selected.codigopostal}" title="#{bundle.CreatePropiedadTitle_codigopostal}" />
+                    <h:outputLabel value="Tipo Propiedad:" for="tipo" />
+                    <h:inputText id="tipo" value="#{propiedadController.selected.tipo}" title="#{bundle.CreatePropiedadTitle_tipo}" />
+                    <h:outputLabel value="Habitaciones:" for="hab" />
+                    <h:inputText id="hab" value="#{propiedadController.selected.hab}" title="#{bundle.CreatePropiedadTitle_hab}" />
+                    <h:outputLabel value="Renta:" for="renta" />
+                    <h:inputText id="renta" value="#{propiedadController.selected.renta}" title="#{bundle.CreatePropiedadTitle_renta}" />
+                    <h:outputLabel value="Disponibilidad:" for="disponibilidad" />
+                    <h:inputText id="disponibilidad" value="#{propiedadController.selected.disponibilidad}" title="#{bundle.CreatePropiedadTitle_disponibilidad}" />
+                    <h:outputLabel value="Número arriendo:" for="numarriendo" />
+                    <h:inputText id="numarriendo" value="#{propiedadController.selected.numarriendo}" title="#{bundle.CreatePropiedadTitle_numarriendo}" />
+                    <h:outputLabel value="Número empleado:" for="numempleado" />
+                    <h:selectOneMenu id="numempleado" value="#{propiedadController.selected.numempleado}" title="#{bundle.CreatePropiedadTitle_numempleado}" >
+                        <f:selectItems value="#{empleadoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Número propietario:" for="numpropietario" />
+                    <h:selectOneMenu id="numpropietario" value="#{propiedadController.selected.numpropietario}" title="#{bundle.CreatePropiedadTitle_numpropietario}" >
+                        <f:selectItems value="#{propietarioController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{propiedadController.create}" value="Guardar" />
+                <br />
+                <br />
+                <h:commandLink action="#{propiedadController.prepareList}" value="Mostrar lista de propiedades" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Volver al Menú"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

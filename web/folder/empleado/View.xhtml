@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Vista específica"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Nro empleado:"/>
+                    <h:outputText value="#{empleadoController.selected.numempleado}" title="#{bundle.ViewEmpleadoTitle_numempleado}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_nombre}"/>
+                    <h:outputText value="#{empleadoController.selected.nombre}" title="#{bundle.ViewEmpleadoTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_apellido}"/>
+                    <h:outputText value="#{empleadoController.selected.apellido}" title="#{bundle.ViewEmpleadoTitle_apellido}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_cargo}"/>
+                    <h:outputText value="#{empleadoController.selected.cargo}" title="#{bundle.ViewEmpleadoTitle_cargo}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_sexo}"/>
+                    <h:outputText value="#{empleadoController.selected.sexo}" title="#{bundle.ViewEmpleadoTitle_sexo}"/>
+                    <h:outputText value="Fecha de nacimiento:"/>
+                    <h:outputText value="#{empleadoController.selected.fechnac}" title="#{bundle.ViewEmpleadoTitle_fechnac}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_prevision}"/>
+                    <h:outputText value="#{empleadoController.selected.prevision}" title="#{bundle.ViewEmpleadoTitle_prevision}"/>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_salario}"/>
+                    <h:outputText value="#{empleadoController.selected.salario}" title="#{bundle.ViewEmpleadoTitle_salario}"/>
+                    <h:outputText value="Fecha inicio de contrato:"/>
+                    <h:outputText value="#{empleadoController.selected.fechacontratoinic}" title="#{bundle.ViewEmpleadoTitle_fechacontratoinic}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="Fecha termino de contrato:"/>
+                    <h:outputText value="#{empleadoController.selected.fechacontratoterm}" title="#{bundle.ViewEmpleadoTitle_fechacontratoterm}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewEmpleadoLabel_bono}"/>
+                    <h:outputText value="#{empleadoController.selected.bono}" title="#{bundle.ViewEmpleadoTitle_bono}"/>
+                    <h:outputText value="Total de propiedades:"/>
+                    <h:outputText value="#{empleadoController.selected.totpropempleado}" title="#{bundle.ViewEmpleadoTitle_totpropempleado}"/>
+                    <h:outputText value="Nro de oficina:"/>
+                    <h:outputText value="#{empleadoController.selected.numoficina}" title="#{bundle.ViewEmpleadoTitle_numoficina}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{empleadoController.destroyAndView}" value="Eliminar registro de empleado"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="Editar datos"/>
+                <br />
+                <br />
+                <h:commandLink action="#{empleadoController.prepareCreate}" value="Crear nuevo Empleado" />
+                <br />
+                <br />
+                <h:commandLink action="#{empleadoController.prepareList}" value="Lista de Empleados"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Volver al Menú"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

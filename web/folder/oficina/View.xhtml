@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Vista Específica"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Número oficina"/>
+                    <h:outputText value="#{oficinaController.selected.numoficina}" title="#{bundle.ViewOficinaTitle_numoficina}"/>
+                    <h:outputText value="Dirección"/>
+                    <h:outputText value="#{oficinaController.selected.calle}" title="#{bundle.ViewOficinaTitle_calle}"/>
+                    <h:outputText value="Ciudad"/>
+                    <h:outputText value="#{oficinaController.selected.ciudad}" title="#{bundle.ViewOficinaTitle_ciudad}"/>
+                    <h:outputText value="Código postal"/>
+                    <h:outputText value="#{oficinaController.selected.codigopostal}" title="#{bundle.ViewOficinaTitle_codigopostal}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{oficinaController.destroyAndView}" value="Eliminar"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="Editar"/>
+                <br />
+                <h:commandLink action="#{oficinaController.prepareCreate}" value="Ingresar" />
+                <br />
+                <h:commandLink action="#{oficinaController.prepareList}" value="Lista de oficinas"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Volver al Menú"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Vista específica"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="ID Publicidad:"/>
+                    <h:outputText value="#{publicidadController.selected.idpublicidad}" title="#{bundle.ViewPublicidadTitle_idpublicidad}"/>
+                    <h:outputText value="Nombre de la Empresa:"/>
+                    <h:outputText value="#{publicidadController.selected.nombreempresa}" title="#{bundle.ViewPublicidadTitle_nombreempresa}"/>
+                    <h:outputText value="#{bundle.ViewPublicidadLabel_tipo}"/>
+                    <h:outputText value="#{publicidadController.selected.tipo}" title="#{bundle.ViewPublicidadTitle_tipo}"/>
+                    <h:outputText value="Fecha fin de contrato:"/>
+                    <h:outputText value="#{publicidadController.selected.fincontrato}" title="#{bundle.ViewPublicidadTitle_fincontrato}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="Comisión:"/>
+                    <h:outputText value="#{publicidadController.selected.comision}" title="#{bundle.ViewPublicidadTitle_comision}"/>
+                    <h:outputText value="Nro de Propiedad:"/>
+                    <h:outputText value="#{publicidadController.selected.numpropiedad}" title="#{bundle.ViewPublicidadTitle_numpropiedad}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{publicidadController.destroyAndView}" value="Eliminar registro de publicidad"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="Editar datos"/>
+                <br />
+                <br />
+                <h:commandLink action="#{publicidadController.prepareCreate}" value="Crear nueva Publicidad" />
+                <br />
+                <br />
+                <h:commandLink action="#{publicidadController.prepareList}" value="Lista de Publicidades"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Volver al Menú"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

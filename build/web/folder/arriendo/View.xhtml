@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Vista específica"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                 <h:messages errorStyle="color: white" infoStyle="color: orange" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Número de arriendo:"/>
+                    <h:outputText value="#{arriendoController.selected.numarriendo}" title="#{bundle.ViewArriendoTitle_numarriendo}"/>
+                    <h:outputText value="Precio de Renta:"/>
+                    <h:outputText value="#{arriendoController.selected.renta}" title="#{bundle.ViewArriendoTitle_renta}"/>
+                    <h:outputText value="Forma de Pago:"/>
+                    <h:outputText value="#{arriendoController.selected.formapago}" title="#{bundle.ViewArriendoTitle_formapago}"/>
+                    <h:outputText value="#{bundle.ViewArriendoLabel_temporada}"/>
+                    <h:outputText value="#{arriendoController.selected.temporada}" title="#{bundle.ViewArriendoTitle_temporada}"/>
+                    <h:outputText value="#{bundle.ViewArriendoLabel_deposito}"/>
+                    <h:outputText value="#{arriendoController.selected.deposito}" title="#{bundle.ViewArriendoTitle_deposito}"/>
+                    <h:outputText value="#{bundle.ViewArriendoLabel_pagado}"/>
+                    <h:outputText value="#{arriendoController.selected.pagado}" title="#{bundle.ViewArriendoTitle_pagado}"/>
+                    <h:outputText value="Fecha de inicio:"/>
+                    <h:outputText value="#{arriendoController.selected.iniciorenta}" title="#{bundle.ViewArriendoTitle_iniciorenta}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="Fecha de termino:"/>
+                    <h:outputText value="#{arriendoController.selected.finrenta}" title="#{bundle.ViewArriendoTitle_finrenta}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="Nro de Cliente:"/>
+                    <h:outputText value="#{arriendoController.selected.numcliente}" title="#{bundle.ViewArriendoTitle_numcliente}"/>
+                    <h:outputText value="Nro de Propiedad:"/>
+                    <h:outputText value="#{arriendoController.selected.numpropiedad}" title="#{bundle.ViewArriendoTitle_numpropiedad}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{arriendoController.destroyAndView}" value="Eliminar registro de arriendo"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="Editar datos"/>
+                <br />
+                <br />
+                <h:commandLink action="#{arriendoController.prepareCreate}" value="Crear nuevo arriendo" />
+                <br />
+                <br />
+                <h:commandLink action="#{arriendoController.prepareList}" value="Lista de Arriendos"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Volver al Menú"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

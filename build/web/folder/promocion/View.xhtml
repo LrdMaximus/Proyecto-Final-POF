@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Vista Específica"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Número Promoción"/>
+                    <h:outputText value="#{promocionController.selected.idpromocion}" title="#{bundle.ViewPromocionTitle_idpromocion}"/>
+                    <h:outputText value="Nombre Promoción"/>
+                    <h:outputText value="#{promocionController.selected.nombreprom}" title="#{bundle.ViewPromocionTitle_nombreprom}"/>
+                    <h:outputText value="Tipo Promoción"/>
+                    <h:outputText value="#{promocionController.selected.tipoprom}" title="#{bundle.ViewPromocionTitle_tipoprom}"/>
+                    <h:outputText value="Descuento"/>
+                    <h:outputText value="#{promocionController.selected.descuento}" title="#{bundle.ViewPromocionTitle_descuento}"/>
+                    <h:outputText value="Fecha Inicio"/>
+                    <h:outputText value="#{promocionController.selected.fechainicio}" title="#{bundle.ViewPromocionTitle_fechainicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="Fecha Termino"/>
+                    <h:outputText value="#{promocionController.selected.fechatermino}" title="#{bundle.ViewPromocionTitle_fechatermino}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="Número Propiedad"/>
+                    <h:outputText value="#{promocionController.selected.numpropiedad}" title="#{bundle.ViewPromocionTitle_numpropiedad}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{promocionController.destroyAndView}" value="Eliminar"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="Editar"/>
+                <br />
+                <h:commandLink action="#{promocionController.prepareCreate}" value="Crear" />
+                <br />
+                <h:commandLink action="#{promocionController.prepareList}" value="Lista promociones"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Volver al Menú"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

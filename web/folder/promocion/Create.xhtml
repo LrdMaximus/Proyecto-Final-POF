@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Crear Promoción"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Número promoción:" for="idpromocion" />
+                    <h:inputText id="idpromocion" value="#{promocionController.selected.idpromocion}" title="#{bundle.CreatePromocionTitle_idpromocion}" required="true" requiredMessage="#{bundle.CreatePromocionRequiredMessage_idpromocion}"/>
+                    <h:outputLabel value="Nombre Promoción:" for="nombreprom" />
+                    <h:inputText id="nombreprom" value="#{promocionController.selected.nombreprom}" title="#{bundle.CreatePromocionTitle_nombreprom}" />
+                    <h:outputLabel value="Tipo Promoción:" for="tipoprom" />
+                    <h:inputText id="tipoprom" value="#{promocionController.selected.tipoprom}" title="#{bundle.CreatePromocionTitle_tipoprom}" />
+                    <h:outputLabel value="Descuento:" for="descuento" />
+                    <h:inputText id="descuento" value="#{promocionController.selected.descuento}" title="#{bundle.CreatePromocionTitle_descuento}" />
+                    <h:outputLabel value="Fecha inicio:" for="fechainicio" />
+                    <h:inputText id="fechainicio" value="#{promocionController.selected.fechainicio}" title="#{bundle.CreatePromocionTitle_fechainicio}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Fecha Término:" for="fechatermino" />
+                    <h:inputText id="fechatermino" value="#{promocionController.selected.fechatermino}" title="#{bundle.CreatePromocionTitle_fechatermino}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Número Propiedad:" for="numpropiedad" />
+                    <h:selectOneMenu id="numpropiedad" value="#{promocionController.selected.numpropiedad}" title="#{bundle.CreatePromocionTitle_numpropiedad}" >
+                        <f:selectItems value="#{propiedadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{promocionController.create}" value="Guardar" />
+                <br />
+                <br />
+                <h:commandLink action="#{promocionController.prepareList}" value="Mostrar promociones" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Volver al Menú"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

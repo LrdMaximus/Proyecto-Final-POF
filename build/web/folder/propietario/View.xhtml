@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Vista Específica"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="Número Propietario:"/>
+                    <h:outputText value="#{propietarioController.selected.numpropietario}" title="#{bundle.ViewPropietarioTitle_numpropietario}"/>
+                    <h:outputText value="Nombre:"/>
+                    <h:outputText value="#{propietarioController.selected.nombre}" title="#{bundle.ViewPropietarioTitle_nombre}"/>
+                    <h:outputText value="Apellido:"/>
+                    <h:outputText value="#{propietarioController.selected.apellido}" title="#{bundle.ViewPropietarioTitle_apellido}"/>
+                    <h:outputText value="Rut:"/>
+                    <h:outputText value="#{propietarioController.selected.rut}" title="#{bundle.ViewPropietarioTitle_rut}"/>
+                    <h:outputText value="#{bundle.ViewPropietarioLabel_direccion}"/>
+                    <h:outputText value="#{propietarioController.selected.direccion}" title="#{bundle.ViewPropietarioTitle_direccion}"/>
+                    <h:outputText value="#{bundle.ViewPropietarioLabel_telefono}"/>
+                    <h:outputText value="#{propietarioController.selected.telefono}" title="#{bundle.ViewPropietarioTitle_telefono}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{propietarioController.destroyAndView}" value="Elimnar registro propietario"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="Editar datos"/>
+                <br />
+                <h:commandLink action="#{propietarioController.prepareCreate}" value="Crear Propietario" />
+                <br />
+                <h:commandLink action="#{propietarioController.prepareList}" value="Lista de Propietarios"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Volver al Menú"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Mantenedor Arriendo"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                     <h:messages errorStyle="color: white" infoStyle="color: orange" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListArriendoEmpty}" rendered="#{arriendoController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{arriendoController.items.rowCount > 0}">
+                    <h:outputText value="#{arriendoController.pagination.pageFirstItem + 1}..#{arriendoController.pagination.pageLastItem + 1}/#{arriendoController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{arriendoController.previous}" value="#{bundle.Previous} #{arriendoController.pagination.pageSize}" rendered="#{arriendoController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{arriendoController.next}" value="#{bundle.Next} #{arriendoController.pagination.pageSize}" rendered="#{arriendoController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{arriendoController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Número de arriendo"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numarriendo}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Precio de Renta"/>
+                            </f:facet>
+                            <h:outputText value="#{item.renta}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Forma de Pago"/>
+                            </f:facet>
+                            <h:outputText value="#{item.formapago}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArriendoTitle_temporada}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.temporada}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArriendoTitle_deposito}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.deposito}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListArriendoTitle_pagado}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.pagado}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Fecha de inicio"/>
+                            </f:facet>
+                            <h:outputText value="#{item.iniciorenta}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Fecha de termino"/>
+                            </f:facet>
+                            <h:outputText value="#{item.finrenta}">
+                                <f:convertDateTime pattern="dd/MM/yyyy" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nro de Cliente"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numcliente}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Nro de Propiedad"/>
+                            </f:facet>
+                            <h:outputText value="#{item.numpropiedad}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{arriendoController.prepareView}" value="Ver"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{arriendoController.prepareEdit}" value="Editar"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{arriendoController.destroy}" value="Eliminar"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{arriendoController.prepareCreate}" value="Registrar nuevo Arriendo"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Volver al Menú"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

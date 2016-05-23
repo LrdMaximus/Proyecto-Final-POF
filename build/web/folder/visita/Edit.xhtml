@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Edición de Datos"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditVisitaLabel_visitaPK_fecha}" for="visitaPK_fecha" />
+                    <h:inputText id="visitaPK_fecha" value="#{visitaController.selected.visitaPK.fecha}" title="#{bundle.EditVisitaTitle_visitaPK_fecha}" required="true" requiredMessage="#{bundle.EditVisitaRequiredMessage_visitaPK_fecha}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditVisitaLabel_comentario}" for="comentario" />
+                    <h:inputText id="comentario" value="#{visitaController.selected.comentario}" title="#{bundle.EditVisitaTitle_comentario}" />
+                    <h:outputLabel value="Nro de Cliente:" for="cliente" />
+                    <h:selectOneMenu id="cliente" value="#{visitaController.selected.cliente}" title="#{bundle.EditVisitaTitle_cliente}" required="true" requiredMessage="#{bundle.EditVisitaRequiredMessage_cliente}">
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="Nro de Propiedad:" for="propiedad" />
+                    <h:selectOneMenu id="propiedad" value="#{visitaController.selected.propiedad}" title="#{bundle.EditVisitaTitle_propiedad}" required="true" requiredMessage="#{bundle.EditVisitaRequiredMessage_propiedad}">
+                        <f:selectItems value="#{propiedadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{visitaController.update}" value="Guardar datos modificados"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="Vista específica"/>
+                <br />
+                <br />
+                <h:commandLink action="#{visitaController.prepareList}" value="Lista de Visitas" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Volver al Menú" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

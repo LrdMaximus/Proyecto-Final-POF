@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewSituacionClienteTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewSituacionClienteLabel_situacionClientePK_codsituacion}"/>
+                    <h:outputText value="#{situacionClienteController.selected.situacionClientePK.codsituacion}" title="#{bundle.ViewSituacionClienteTitle_situacionClientePK_codsituacion}"/>
+                    <h:outputText value="#{bundle.ViewSituacionClienteLabel_nombre}"/>
+                    <h:outputText value="#{situacionClienteController.selected.nombre}" title="#{bundle.ViewSituacionClienteTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewSituacionClienteLabel_apellido}"/>
+                    <h:outputText value="#{situacionClienteController.selected.apellido}" title="#{bundle.ViewSituacionClienteTitle_apellido}"/>
+                    <h:outputText value="#{bundle.ViewSituacionClienteLabel_estado}"/>
+                    <h:outputText value="#{situacionClienteController.selected.estado}" title="#{bundle.ViewSituacionClienteTitle_estado}"/>
+                    <h:outputText value="#{bundle.ViewSituacionClienteLabel_deuda}"/>
+                    <h:outputText value="#{situacionClienteController.selected.deuda}" title="#{bundle.ViewSituacionClienteTitle_deuda}"/>
+                    <h:outputText value="#{bundle.ViewSituacionClienteLabel_numcliente}"/>
+                    <h:outputText value="#{situacionClienteController.selected.numcliente}" title="#{bundle.ViewSituacionClienteTitle_numcliente}"/>
+                    <h:outputText value="#{bundle.ViewSituacionClienteLabel_propiedad}"/>
+                    <h:outputText value="#{situacionClienteController.selected.propiedad}" title="#{bundle.ViewSituacionClienteTitle_propiedad}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{situacionClienteController.destroyAndView}" value="#{bundle.ViewSituacionClienteDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewSituacionClienteEditLink}"/>
+                <br />
+                <h:commandLink action="#{situacionClienteController.prepareCreate}" value="#{bundle.ViewSituacionClienteCreateLink}" />
+                <br />
+                <h:commandLink action="#{situacionClienteController.prepareList}" value="#{bundle.ViewSituacionClienteShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewSituacionClienteIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

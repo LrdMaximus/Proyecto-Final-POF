@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Ingresar inspección"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Número inspección:" for="idinspeccion" />
+                    <h:inputText id="idinspeccion" value="#{inspeccionesController.selected.idinspeccion}" title="#{bundle.CreateInspeccionesTitle_idinspeccion}" required="true" requiredMessage="#{bundle.CreateInspeccionesRequiredMessage_idinspeccion}"/>
+                    <h:outputLabel value="Número propietario" for="numpropietario" />
+                    <h:inputText id="numpropietario" value="#{inspeccionesController.selected.numpropietario}" title="#{bundle.CreateInspeccionesTitle_numpropietario}" />
+                    <h:outputLabel value="Tipo propiedad" for="tipoprop" />
+                    <h:inputText id="tipoprop" value="#{inspeccionesController.selected.tipoprop}" title="#{bundle.CreateInspeccionesTitle_tipoprop}" />
+                    <h:outputLabel value="Código postal:" for="codigopostal" />
+                    <h:inputText id="codigopostal" value="#{inspeccionesController.selected.codigopostal}" title="#{bundle.CreateInspeccionesTitle_codigopostal}" />
+                    <h:outputLabel value="Dirección:" for="calle" />
+                    <h:inputText id="calle" value="#{inspeccionesController.selected.calle}" title="#{bundle.CreateInspeccionesTitle_calle}" />
+                    <h:outputLabel value="Comuna:" for="comuna" />
+                    <h:inputText id="comuna" value="#{inspeccionesController.selected.comuna}" title="#{bundle.CreateInspeccionesTitle_comuna}" />
+                    <h:outputLabel value="Ciudad:" for="ciudad" />
+                    <h:inputText id="ciudad" value="#{inspeccionesController.selected.ciudad}" title="#{bundle.CreateInspeccionesTitle_ciudad}" />
+                    <h:outputLabel value="Fecha ispección:" for="fechainspeccion" />
+                    <h:inputText id="fechainspeccion" value="#{inspeccionesController.selected.fechainspeccion}" title="#{bundle.CreateInspeccionesTitle_fechainspeccion}" >
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="Número propiedad:" for="numpropiedad" />
+                    <h:selectOneMenu id="numpropiedad" value="#{inspeccionesController.selected.numpropiedad}" title="#{bundle.CreateInspeccionesTitle_numpropiedad}" >
+                        <f:selectItems value="#{propiedadController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{inspeccionesController.create}" value="Guardar" />
+                <br />
+                <br />
+                <h:commandLink action="#{inspeccionesController.prepareList}" value="Mostrar lista de inspecciones" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="Volver al menú"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
